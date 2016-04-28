@@ -1,0 +1,20 @@
+/**
+ * Creates a selectable item. 
+ * @constructor
+ * @author <petran> [calafatidis@gmail.com]
+ */
+
+function pnSelectable() {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var activeClass = attrs.activeClass ? attrs.activeClass : 'pn-active';
+            element.bind('click', function(e) {
+              element.parent().children().each(function() {
+                $(this).removeClass(activeClass);
+              });
+              element.addClass(activeClass);
+            });
+        }
+    }
+}
